@@ -4,6 +4,9 @@ public class PlayerMovement : MonoBehaviour
 {
     /* nesnenin fiziksel hareketini yönlendirmek için rigibody ile rb adını verdik ve unityde rigibodyi içine attık */
     public Rigidbody rb;
+
+    public float forwardForce = 2000f;
+    public float sidewaysForce = 500f;
     
     
         /* oyun başladıgında konsolda yazı gösterir
@@ -25,6 +28,17 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         /* Ekran yenilemesi yüksek bilgisayarın avantajını kaldırdık*/
-        rb.AddForce(0, 0, 2000*Time.deltaTime);
+        rb.AddForce(0, 0, forwardForce*Time.deltaTime); // public floatla forwardforce tanımladık ve artık hızı kendimiz ekliyoruz
+        
+        if (Input.GetKey("d"))
+        {
+            rb.AddForce(sidewaysForce *  Time.deltaTime, 0, 0);
+        }
+
+        if (Input.GetKey("a"))
+        {
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0 );
+        }
+
     }
 }
