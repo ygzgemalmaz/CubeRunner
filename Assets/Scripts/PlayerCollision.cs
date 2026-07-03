@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class PlayerCollision : MonoBehaviour
 {
     public PlayerMovement playerMovement;
@@ -7,8 +6,8 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collisionInfo.collider.tag=="Obstacle")
         {
+            Debug.Log("collision detected");
             playerMovement.enabled = false;
         }
     }
-
 }
