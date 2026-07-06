@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class PlayerCollision : MonoBehaviour
 {
     public PlayerMovement playerMovement;
@@ -6,8 +7,12 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collisionInfo.collider.tag=="Obstacle")
         {
-            Debug.Log("collision detected");
             playerMovement.enabled = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else if(collisionInfo.collider.tag=="Finish")
+        {
+            Debug.Log("Bu aþamayý bitirdiniz");
         }
     }
 }
